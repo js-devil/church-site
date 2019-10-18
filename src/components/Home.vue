@@ -519,7 +519,7 @@ export default {
                     this.seconds = parseInt(seconds_left % 60);
                 
                 }, 1000);
-            }	
+			}				
         },
         initLightbox(){
             if($('.gallery_item').length)
@@ -534,7 +534,6 @@ export default {
         }
     },
     mounted(){
-	    this.initMenu();
         this.initTimer()
         this.initLightbox()
 	},

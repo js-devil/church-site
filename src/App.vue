@@ -1,38 +1,110 @@
 <template>
   <div id="app">
-    <HeaderView></HeaderView>
-    <router-view>
-      <HomeView></HomeView>
-    </router-view>
-    <FooterView></FooterView>
+    <div v-if="!$route.path.includes('dashboard')">
+		<Header v-if="!hideNavFor404 && !hideNavForLogin" />
+    
+		<transition :name="transition" mode="out-in">
+			<router-view>
+			<Home />
+			</router-view>
+		</transition>
+		<Footer v-if="!hideNavFor404 && !hideNavForLogin" />
+	</div>
+
+	<div class="page-wrapper" v-else>
+        <MobileHeader />
+        <SideBar />
+		<div class="page-container">
+			<AdminHeader />
+			<router-view>
+				<Dashboard />
+			</router-view>
+		</div>
+		
+    </div>
   </div>
 </template>
 
 <script>
-import HeaderPage from "./components/navigation/Header.vue";
-import FooterPage from "./components/navigation/Footer.vue";
-import HomePage from "./components/Home.vue";
+import Header from "./components/navigation/Header.vue";
+import Footer from "./components/navigation/Footer.vue";
+import Home from "./components/Home.vue";
+import axios from 'axios'
+import $ from "jquery";
+import moment from 'moment'
+import { mapState } from 'vuex'
+
+// Admin
+import MobileHeader from './components/admin/navs/MobileHeader.vue'
+import SideBar from './components/admin/navs/Sidebar.vue'
+import Dashboard from './components/admin/Home.vue'
+import AdminHeader from './components/admin/components/Header.vue'
+
+
+window.axios = axios
+window.Endpoint = `http://localhost:5000/api/v1`
+window.$ = $;
+window.moment = moment
+window.mapState = mapState
 
 export default {
   name: 'App',
-  components:{
-    HeaderView: HeaderPage,
-    FooterView: FooterPage,
-    HomeView: HomePage,
+  data(){
+	return {
+		hideNavForLogin: false, hideNavFor404: false,
+		transitions: ['flip', 'slide'],
+		transition: '',
+	}
+  },
+  components:{ Header, Footer, Home, MobileHeader, SideBar, Dashboard, AdminHeader },
+  methods: {
+	showNavMenu(){
+		this.hideNavForLogin = (this.$route.name!=='Login') ? false : true
+		this.hideNavFor404 = (this.$route.name!=='404') ? false : true
+	},
+	changeTransitions(){
+		let randomNumber = Math.floor(Math.random() * this.transitions.length);
+		this.transition = this.transitions[randomNumber]
+	}
+  },
+  mounted(){
+	this.changeTransitions()
+	this.showNavMenu()
+  },
+  watch: {
+	$route(){
+	  this.showNavMenu()
+	  this.changeTransitions()
+	}
   }
 }
 </script>
 
 <style>
-/* #app {
-  font-family: 'Avenir', Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
-} */
+/*slide transition*/
+.slide-enter-active,
+.slide-leave-active
+ {
+  transition: transform 0.4s ease-out;
+}
+.slide-enter {
+  transform: translateX(-30%);
+}
+.slide-leave-to {
+  transform: translateX(30%);
+}
 
+.flip-enter-active,
+.flip-leave-active
+ {
+  transition: transform 0.3s ease-out;
+}
+.flip-enter {
+  transform: rotateY(90deg);
+}
+.flip-leave-to {
+  transform: rotateY(90deg);
+}
 /***********
 1. Fonts
 ***********/
@@ -66,6 +138,8 @@ div
 	-webkit-box-sizing: border-box;
     -moz-box-sizing: border-box;
     box-sizing: border-box;
+	/* color: #b10707;
+	color: #db5246 */
 }
 ul
 {
@@ -243,4 +317,17 @@ section
 	font-weight: 700;
 }
 
+
+.page-container {
+    background: #e5e5e5;
+    padding-left: 300px;
+}
+
+@media (max-width: 991px) {
+    .page-container {
+        position: relative;
+        top: 88px;
+        padding-left: 0;
+    }
+}
 </style>

@@ -4,7 +4,15 @@ import Vue from 'vue'
 import App from './App'
 import router from './router'
 import { store } from "./store/index.js";
+import Swal from 'sweetalert2'
 
+window.Swal = Swal
+window.Toast = Swal.mixin({
+  toast: true,
+  position: 'top-end',
+  showConfirmButton: false,
+  timer: 3000
+});
 
 Vue.config.productionTip = false
 

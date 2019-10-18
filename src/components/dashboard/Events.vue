@@ -72,157 +72,29 @@
             <div class="events_items d-flex flex-lg-row flex-column align-items-lg-start align-items-center justify-content-lg-between justify-content-center flex-wrap">
 
                 <!-- Event -->
-                <div class="events_item">
-                    <div class="events_item_image"><img src="../../assets/images/event_2.jpg" alt=""></div>
-                    <div class="events_item_content d-flex flex-row align-items-start justfy-content-start">
-                        <div class="event_date">
-                            <div class="d-flex flex-column align-items-center justify-content-center">
-                                <div class="event_day">19</div>
-                                <div class="event_month">mar</div>
+                <div v-for="(event, i) in events" :key="i">
+                    <div class="events_item">
+                        <div class="events_item_image"><img :src="event.image_url" v-if='event.image_url' alt="" /> <img src="'../../assets/images/event_6.jpg'" alt="" v-else /> </div>
+                        <div class="events_item_content d-flex flex-row align-items-start justfy-content-start">
+                            <div class="event_date">
+                                <div class="d-flex flex-column align-items-center justify-content-center">
+                                    <div class="event_day">21</div>
+                                    <div class="event_month">mar</div>
+                                </div>
                             </div>
-                        </div>
-                        <div class="event_content">
-                            <div class="event_title"><a href="#">To Love and to Cherish, The Wedding</a></div>
-                            <ul class="event_row">
-                                <li>
-                                    <div class="event_icon"><img src="../../assets/images/calendar.png" alt=""></div>
-                                    <span>08:00 AM - 11:00 AM</span>
-                                </li>
-                                <li>
-                                    <div class="event_icon"><img src="../../assets/images/location.png" alt=""></div>
-                                    <span>1195 Lobortis Rd, New Orleans, New Hampshire</span>
-                                </li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Event -->
-                <div class="events_item">
-                    <div class="events_item_image"><img src="../../assets/images/event_3.jpg" alt=""></div>
-                    <div class="events_item_content d-flex flex-row align-items-start justfy-content-start">
-                        <div class="event_date">
-                            <div class="d-flex flex-column align-items-center justify-content-center">
-                                <div class="event_day">20</div>
-                                <div class="event_month">mar</div>
+                            <div class="event_content">
+                                <div class="event_title"><a href="#">{{event.title}}</a></div>
+                                <ul class="event_row">
+                                    <li>
+                                        <div class="event_icon"><img src="../../assets/images/calendar.png" alt=""></div>
+                                        <span>{{event.duration}}</span>
+                                    </li>
+                                    <li>
+                                        <div class="event_icon"><img src="../../assets/images/location.png" alt=""></div>
+                                        <span>{{event.title}}</span>
+                                    </li>
+                                </ul>
                             </div>
-                        </div>
-                        <div class="event_content">
-                            <div class="event_title"><a href="#">The Christian Community in  America</a></div>
-                            <ul class="event_row">
-                                <li>
-                                    <div class="event_icon"><img src="../../assets/images/calendar.png" alt=""></div>
-                                    <span>08:00 AM - 11:00 AM</span>
-                                </li>
-                                <li>
-                                    <div class="event_icon"><img src="../../assets/images/location.png" alt=""></div>
-                                    <span>1195 Lobortis Rd, New Orleans, New Hampshire</span>
-                                </li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Event -->
-                <div class="events_item">
-                    <div class="events_item_image"><img src="../../assets/images/event_4.jpg" alt=""></div>
-                    <div class="events_item_content d-flex flex-row align-items-start justfy-content-start">
-                        <div class="event_date">
-                            <div class="d-flex flex-column align-items-center justify-content-center">
-                                <div class="event_day">20</div>
-                                <div class="event_month">mar</div>
-                            </div>
-                        </div>
-                        <div class="event_content">
-                            <div class="event_title"><a href="#">On-Campus Young Family Small Group</a></div>
-                            <ul class="event_row">
-                                <li>
-                                    <div class="event_icon"><img src="../../assets/images/calendar.png" alt=""></div>
-                                    <span>08:00 AM - 11:00 AM</span>
-                                </li>
-                                <li>
-                                    <div class="event_icon"><img src="../../assets/images/location.png" alt=""></div>
-                                    <span>1195 Lobortis Rd, New Orleans, New Hampshire</span>
-                                </li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Event -->
-                <div class="events_item">
-                    <div class="events_item_image"><img src="../../assets/images/event_5.jpg" alt=""></div>
-                    <div class="events_item_content d-flex flex-row align-items-start justfy-content-start">
-                        <div class="event_date">
-                            <div class="d-flex flex-column align-items-center justify-content-center">
-                                <div class="event_day">21</div>
-                                <div class="event_month">mar</div>
-                            </div>
-                        </div>
-                        <div class="event_content">
-                            <div class="event_title"><a href="#">Parent Child Dedication Workshop</a></div>
-                            <ul class="event_row">
-                                <li>
-                                    <div class="event_icon"><img src="../../assets/images/calendar.png" alt=""></div>
-                                    <span>08:00 AM - 11:00 AM</span>
-                                </li>
-                                <li>
-                                    <div class="event_icon"><img src="../../assets/images/location.png" alt=""></div>
-                                    <span>1195 Lobortis Rd, New Orleans, New Hampshire</span>
-                                </li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Event -->
-                <div class="events_item">
-                    <div class="events_item_image"><img src="../../assets/images/event_6.jpg" alt=""></div>
-                    <div class="events_item_content d-flex flex-row align-items-start justfy-content-start">
-                        <div class="event_date">
-                            <div class="d-flex flex-column align-items-center justify-content-center">
-                                <div class="event_day">21</div>
-                                <div class="event_month">mar</div>
-                            </div>
-                        </div>
-                        <div class="event_content">
-                            <div class="event_title"><a href="#">Group Leader Interest Meeting</a></div>
-                            <ul class="event_row">
-                                <li>
-                                    <div class="event_icon"><img src="../../assets/images/calendar.png" alt=""></div>
-                                    <span>08:00 AM - 11:00 AM</span>
-                                </li>
-                                <li>
-                                    <div class="event_icon"><img src="../../assets/images/location.png" alt=""></div>
-                                    <span>1195 Lobortis Rd, New Orleans, New Hampshire</span>
-                                </li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Event -->
-                <div class="events_item">
-                    <div class="events_item_image"><img src="../../assets/images/event_7.jpg" alt=""></div>
-                    <div class="events_item_content d-flex flex-row align-items-start justfy-content-start">
-                        <div class="event_date">
-                            <div class="d-flex flex-column align-items-center justify-content-center">
-                                <div class="event_day">22</div>
-                                <div class="event_month">mar</div>
-                            </div>
-                        </div>
-                        <div class="event_content">
-                            <div class="event_title"><a href="#">Wedding of KARYN and NICHOLAS</a></div>
-                            <ul class="event_row">
-                                <li>
-                                    <div class="event_icon"><img src="../../assets/images/calendar.png" alt=""></div>
-                                    <span>08:00 AM - 11:00 AM</span>
-                                </li>
-                                <li>
-                                    <div class="event_icon"><img src="../../assets/images/location.png" alt=""></div>
-                                    <span>1195 Lobortis Rd, New Orleans, New Hampshire</span>
-                                </li>
-                            </ul>
                         </div>
                     </div>
                 </div>
@@ -257,6 +129,7 @@ export default {
     },
     data(){
         return{
+            events: [],
             days: null, hours: null, minutes: null, seconds: null
         }
     },
@@ -288,9 +161,17 @@ export default {
                 }, 1000);
             }	
         },
+        async getAllEvents () {
+            let response = await axios.get(`${Endpoint}/events`)
+                
+            if(response.status==200){
+                this.events = await response.data.events
+            }
+        }
     },
     mounted(){
         this.initTimer()
+        this.getAllEvents()
     }
 }
 </script>

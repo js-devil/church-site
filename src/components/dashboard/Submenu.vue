@@ -27,23 +27,24 @@ export default {
 			showMenu: true,
 		}
 	},
-	mounted(){
-		this.pathName = this.$route.name
-		if(this.pathName=='Home'){
-			this.showMenu = false
-		}
-		else{
-			this.showMenu = true
-		}
-	},
-		watch:{
-		$route(){
+	methods: {
+		showSubMenu(){
 			this.pathName = this.$route.name
-			if(this.pathName=='Home'){
+
+			if(this.pathName=='Home' || this.pathName=='404'){
 				this.showMenu = false
-			}else{
+			}
+			else{
 				this.showMenu = true
 			}
+		}
+	},
+	mounted(){
+		this.showSubMenu()		
+	},
+	watch:{
+		$route(){
+			this.showSubMenu()
 		}
 	},
     computed:{

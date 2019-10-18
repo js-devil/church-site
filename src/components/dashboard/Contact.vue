@@ -232,4 +232,6 @@ export default {
 	width: 100%;
 	height: calc(100% + 30px);
 }
+
+
 </style>
